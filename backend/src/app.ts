@@ -1,5 +1,7 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
+import authRoutes from "./routes/authRoutes";
+import taskRoutes from "./routes/taskRoutes";
 
 const app: Application = express();
 
@@ -13,11 +15,8 @@ app.get("/", (req: Request, res: Response) => {
   res.json({ message: "Koncepthive Task Manager API is running" });
 });
 
-import authRoutes from "./routes/authRoutes";
-// import taskRoutes from "./routes/taskRoutes";
-
-// API Routes
+// Routes
 app.use("/api/auth", authRoutes);
-// app.use("/api/tasks", taskRoutes);
+app.use("/api/tasks", taskRoutes);
 
 export default app;
